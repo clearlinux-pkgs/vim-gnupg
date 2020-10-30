@@ -4,10 +4,10 @@
 #
 Name     : vim-gnupg
 Version  : 2.6.1
-Release  : 1
+Release  : 2
 URL      : https://github.com/jamessan/vim-gnupg/archive/v2.6.1.tar.gz
 Source0  : https://github.com/jamessan/vim-gnupg/archive/v2.6.1.tar.gz
-Summary  : Plugin for transparent editing of gpg encrypted files
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Vim
 Requires: vim-gnupg-data = %{version}-%{release}
@@ -26,19 +26,25 @@ data components for the vim-gnupg package.
 
 %prep
 %setup -q -n vim-gnupg-2.6.1
+cd %{_builddir}/vim-gnupg-2.6.1
 %patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1547690943
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604085640
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1547690943
+export SOURCE_DATE_EPOCH=1604085640
 rm -rf %{buildroot}
 %make_install
 
