@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Arjan van de Ven <arjan@linux.intel.com>
+Date: Thu, 17 Jan 2019 02:09:16 +0000
+Subject: [PATCH] Add a makefile
+
+[2021-09-02]: Install to /vimfiles system vendor location; also install
+              the autoload script.
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ Makefile | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 Makefile
+
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000..1762663
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,8 @@
++all: none
++
++none:
++	echo No build
++
++install:
++	mkdir -p $(DESTDIR)/usr/share/vim/vimfiles
++	cp -a autoload plugin $(DESTDIR)/usr/share/vim/vimfiles/

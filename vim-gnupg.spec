@@ -4,14 +4,14 @@
 #
 Name     : vim-gnupg
 Version  : 2.7.1
-Release  : 3
+Release  : 4
 URL      : https://github.com/jamessan/vim-gnupg/archive/v2.7.1/vim-gnupg-2.7.1.tar.gz
 Source0  : https://github.com/jamessan/vim-gnupg/archive/v2.7.1/vim-gnupg-2.7.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Vim
 Requires: vim-gnupg-data = %{version}-%{release}
-Patch1: build.patch
+Patch1: 0001-Add-a-makefile.patch
 
 %description
 # vim-gnupg
@@ -40,7 +40,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605722336
+export SOURCE_DATE_EPOCH=1630628354
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -50,7 +50,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1605722336
+export SOURCE_DATE_EPOCH=1630628354
 rm -rf %{buildroot}
 %make_install
 
@@ -59,4 +59,5 @@ rm -rf %{buildroot}
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/vim/addons/plugin/gnupg.vim
+/usr/share/vim/vimfiles/autoload/gnupg.vim
+/usr/share/vim/vimfiles/plugin/gnupg.vim
